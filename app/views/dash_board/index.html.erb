@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "login_register" %>
+<div class="li" >
+<h1>Welcome to App</h1>
+  <div class="log_in_controls">
+
+  </div>
+  <div class="register">
+    <%= form_for(@user ||= User.new, :as => :user, :url => users_new_path(@user)) do |f| %>
+      <div class="control_align">
+        <%= f.label :Name, :class=>"align name" %>
+        <%= f.text_field :name %><br />
+      </div>
+      <div class="control_align">
+       <%= f.label :Gender, :class=>"align"%>
+       <%= f.radio_button :gender, 'male'  %><span >Male</span>
+       <%= f.radio_button :gender, 'female' %><span >Female</span><br />
+      </div>
+      <div class="control_align">
+       <%= f.label :country, :class=>"align" %>
+       <%= f.select :country, CountryStateSelect::Constant::COUNTRIES, {}, id: 'country_id', :style=>"width:26%"%><br />
+      </div>
+      <div class="control_align">
+       <%= f.label :state, :style=>"padding-right:60px" %>
+       <%= f.text_field :state ,:id=> 'state_name'%><br />
+      </div>
+    <% end %>
+  </div>
+</div>
